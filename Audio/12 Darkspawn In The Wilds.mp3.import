@@ -1,0 +1,15 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+path="res://.import/12 Darkspawn In The Wilds.mp3-326608268f8973408c3e5408acc2e55d.mp3str"
+
+[deps]
+
+source_file="res://Audio/12 Darkspawn In The Wilds.mp3"
+dest_files=[ "res://.import/12 Darkspawn In The Wilds.mp3-326608268f8973408c3e5408acc2e55d.mp3str" ]
+
+[params]
+
+loop=true
+loop_offset=0

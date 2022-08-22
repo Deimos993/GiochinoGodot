@@ -1,0 +1,15 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+path="res://.import/24. Guardians Of The Past.mp3-fb23699db3484aeb74fb830356c0489f.mp3str"
+
+[deps]
+
+source_file="res://Audio/24. Guardians Of The Past.mp3"
+dest_files=[ "res://.import/24. Guardians Of The Past.mp3-fb23699db3484aeb74fb830356c0489f.mp3str" ]
+
+[params]
+
+loop=true
+loop_offset=0
