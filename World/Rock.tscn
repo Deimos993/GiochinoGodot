@@ -1,0 +1,37 @@
+[gd_scene load_steps=2 format=2]
+
+[ext_resource path="res://fb98a3cb828965d198723f53f6b43323.png" type="Texture" id=1]
+
+[node name="Rock" type="StaticBody2D"]
+
+[node name="Sprite" type="Sprite" parent="."]
+position = Vector2( -8, -8 )
+texture = ExtResource( 1 )
+hframes = 24
+vframes = 24
+frame = 33
+
+[node name="Sprite2" type="Sprite" parent="."]
+position = Vector2( 8, -8 )
+texture = ExtResource( 1 )
+hframes = 24
+vframes = 24
+frame = 34
+
+[node name="Sprite3" type="Sprite" parent="."]
+position = Vector2( -8, 8 )
+texture = ExtResource( 1 )
+hframes = 24
+vframes = 24
+frame = 57
+
+[node name="Sprite4" type="Sprite" parent="."]
+position = Vector2( 8, 8 )
+texture = ExtResource( 1 )
+hframes = 24
+vframes = 24
+frame = 58
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
+build_mode = 1
+polygon = PoolVector2Array( 15, 0, 13, 8, 7, 11, 0, 13, -8, 11, -12, 8, -14, 6, -14, 0, -14, -4, -12, -8, -2, -15, 3, -15, 12, -8, 14, -5 )
