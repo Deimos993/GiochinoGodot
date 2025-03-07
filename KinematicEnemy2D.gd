@@ -1,11 +1,11 @@
-extends KinematicBody2D
+extends CharacterBody2D
 
 const EnemyDeathEffect = preload("res://Effects/EnemyDeathEffect.tscn")
 
-export var ACCELERATION = 300
-export var MAX_SPEED = 50
-export var FRICTION = 200
-export var WANDER_TARGET_RANGE = 4
+@export var ACCELERATION = 300
+@export var MAX_SPEED = 50
+@export var FRICTION = 200
+@export var WANDER_TARGET_RANGE = 4
 
 enum {
 	IDLE,
@@ -18,20 +18,22 @@ var knockback = Vector2.ZERO
 
 var state = CHASE
 
-onready var sprite = $Sprite
-onready var stats = $Stats
-onready var playerDetectionZone = $PlayerDetectionZone
-onready var hurtbox = $Hurtbox
-onready var softCollision = $SoftCollision
-onready var wanderController = $WanderController
-onready var animationPlayer = $AnimationPlayer
+@onready var sprite = $Sprite2D
+@onready var stats = $Stats
+@onready var playerDetectionZone = $PlayerDetectionZone
+@onready var hurtbox = $Hurtbox
+@onready var softCollision = $SoftCollision
+@onready var wanderController = $WanderController
+@onready var animationPlayer = $AnimationPlayer
 
 func _ready():
 	state = pick_random_state([IDLE, WANDER])
 
 func _physics_process(delta):
 	knockback = knockback.move_toward(Vector2.ZERO, FRICTION * delta)
-	knockback = move_and_slide(knockback)
+	set_velocity(knockback)
+	move_and_slide()
+	knockback = velocity
 	
 	match state:
 		IDLE:
@@ -57,7 +59,9 @@ func _physics_process(delta):
 
 	if softCollision.is_colliding():
 		velocity += softCollision.get_push_vector() * delta * 400
-	velocity = move_and_slide(velocity)
+	set_velocity(velocity)
+	move_and_slide()
+	velocity = velocity
 
 func accelerate_towards_point(point, delta):
 	var direction = global_position.direction_to(point)
@@ -70,7 +74,7 @@ func seek_player():
 
 func update_wander():
 	state = pick_random_state([IDLE, WANDER])
-	wanderController.start_wander_timer(rand_range(1, 3))
+	wanderController.start_wander_timer(randf_range(1, 3))
 
 func pick_random_state(state_list):
 	state_list.shuffle()
@@ -85,7 +89,7 @@ func _on_Hurtbox_area_entered(area):
 
 func _on_Stats_no_health():
 	queue_free()
-	var enemyDeathEffect = EnemyDeathEffect.instance()
+	var enemyDeathEffect = EnemyDeathEffect.instantiate()
 	get_parent().add_child(enemyDeathEffect)
 	enemyDeathEffect.global_position = global_position
 	
