@@ -3,7 +3,7 @@ extends Node2D
 func _on_NewGameButton_pressed():
 # warning-ignore:unused_variable
 	var NewGameButton
-	NewGameButton = get_tree().change_scene('res://World/GameScene.tscn')
+	NewGameButton = get_tree().change_scene_to_file('res://World/GameScene.tscn')
 
 
 

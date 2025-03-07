@@ -9,4 +9,3 @@ func _ready():
 func _on_Checkpoint_body_entered(body):
 	Checkpoint.last_position = global_position
 	$AnimationPlayer.play("idle")
-
